@@ -422,4 +422,64 @@ footer p {
 }
 .about-text + .about-text {
   margin-top: 1.3rem;
+}
+@media (max-width: 600px) {
+  .sticky-header {
+    padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  }
+  .sticky-header h1 {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+  .sticky-header h2 {
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+  }
+  #intro, #timeline, #gallery {
+    padding: 0.7rem 0.2rem;
+    margin: 1rem 0.1rem;
+    border-radius: 10px;
+  }
+  .timeline-card {
+    padding: 0.7rem 0.2rem 0.7rem 0.7rem;
+    max-width: 98vw;
+  }
+  .timeline-dot {
+    left: -14px;
+    width: 14px;
+    height: 14px;
+    font-size: 0.7rem;
+    border-width: 2px;
+  }
+  .gallery-belt-outer {
+    height: 80px;
+  }
+  .gallery-belt img {
+    width: 90px;
+    height: 54px;
+    border-radius: 7px;
+  }
+  .about-heading, #gallery h3, #timeline h3 {
+    font-size: 1.1rem;
+  }
+  .about-text, .about-tagline, .gallery-context {
+    font-size: 0.92rem;
+  }
+  footer {
+    padding: 1.2rem 0.5rem 0.7rem 0.5rem;
+  }
+}
+#contact, #contact h3, #contact .contact-btn, #contact .pill-btn {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .bg-circle {
+    display: none;
+  }
+  .bg-circle.mobile {
+    display: block;
+    width: 18px !important;
+    height: 18px !important;
+    opacity: 0.10 !important;
+  }
 } 

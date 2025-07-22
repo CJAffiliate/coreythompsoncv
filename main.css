@@ -475,7 +475,7 @@ body {
   }
   
   .profile-name {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   
   .card {
@@ -496,16 +496,16 @@ body {
   }
   
   .gallery-belt {
-    gap: 1rem;
+    gap: 0.75rem;
   }
   
   .gallery-item {
-    min-width: 250px;
-    height: 250px;
+    min-width: 200px;
+    height: 200px;
   }
   
   .gallery-item img {
-    height: 250px;
+    height: 200px;
   }
   
   .cv-content {
@@ -529,7 +529,7 @@ body {
 
 @media (max-width: 480px) {
   .profile-name {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .profile-title {
@@ -557,13 +557,17 @@ body {
     font-size: 0.9rem;
   }
   
+  .gallery-belt {
+    gap: 0.5rem;
+  }
+  
   .gallery-item {
-    min-width: 200px;
-    height: 200px;
+    min-width: 150px;
+    height: 150px;
   }
   
   .gallery-item img {
-    height: 200px;
+    height: 150px;
   }
   
   .about-text {

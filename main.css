@@ -495,17 +495,22 @@ body {
     align-self: flex-start;
   }
   
+  .gallery-container {
+    margin: 1rem -1rem 0 -1rem;
+    padding: 0 1rem;
+  }
+  
   .gallery-belt {
     gap: 0.75rem;
   }
   
   .gallery-item {
-    min-width: 200px;
-    height: 200px;
+    min-width: 180px;
+    height: 180px;
   }
   
   .gallery-item img {
-    height: 200px;
+    height: 180px;
   }
   
   .cv-content {
@@ -557,17 +562,22 @@ body {
     font-size: 0.9rem;
   }
   
+  .gallery-container {
+    margin: 1rem -1rem 0 -1rem;
+    padding: 0 0.5rem;
+  }
+  
   .gallery-belt {
     gap: 0.5rem;
   }
   
   .gallery-item {
-    min-width: 150px;
-    height: 150px;
+    min-width: 140px;
+    height: 140px;
   }
   
   .gallery-item img {
-    height: 150px;
+    height: 140px;
   }
   
   .about-text {

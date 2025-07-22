@@ -5,7 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Corey Thompson | Performance Marketing Specialist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="main.css?v=2">
+  <style>
+    /* Critical mobile fallback styles */
+    @media (max-width: 768px) {
+      .gallery-container {
+        margin: 1rem -1rem 0 -1rem !important;
+        padding: 0 1rem !important;
+      }
+      .gallery-item {
+        min-width: 180px !important;
+        height: 180px !important;
+      }
+      .gallery-item img {
+        height: 180px !important;
+      }
+      .profile-name {
+        font-size: 3rem !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery-container {
+        margin: 1rem -1rem 0 -1rem !important;
+        padding: 0 0.5rem !important;
+      }
+      .gallery-item {
+        min-width: 140px !important;
+        height: 140px !important;
+      }
+      .gallery-item img {
+        height: 140px !important;
+      }
+      .profile-name {
+        font-size: 2rem !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="glassmorphism-shine top-right"></div>

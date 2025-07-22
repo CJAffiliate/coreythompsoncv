@@ -324,6 +324,7 @@ body {
   overflow: hidden;
   margin-top: 2rem;
   position: relative;
+  width: 100%;
 }
 
 .gallery-belt {
@@ -331,6 +332,7 @@ body {
   gap: 1.5rem;
   animation: scrollGallery 60s linear infinite;
   width: max-content;
+  min-width: 100%;
 }
 
 .gallery-item {
@@ -342,6 +344,7 @@ body {
   min-width: 300px;
   height: 300px;
   flex-shrink: 0;
+  position: relative;
 }
 
 .gallery-item:hover {
@@ -356,6 +359,7 @@ body {
   height: 300px;
   object-fit: cover;
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .gallery-item:hover img {
@@ -475,7 +479,7 @@ body {
   }
   
   .profile-name {
-    font-size: 3rem;
+    font-size: 3rem !important;
   }
   
   .card {
@@ -496,21 +500,25 @@ body {
   }
   
   .gallery-container {
-    margin: 1rem -1rem 0 -1rem;
-    padding: 0 1rem;
+    margin: 1rem -1rem 0 -1rem !important;
+    padding: 0 1rem !important;
+    width: calc(100% + 2rem) !important;
   }
   
   .gallery-belt {
-    gap: 0.75rem;
+    gap: 0.75rem !important;
+    min-width: 100% !important;
   }
   
   .gallery-item {
-    min-width: 180px;
-    height: 180px;
+    min-width: 180px !important;
+    height: 180px !important;
+    flex-shrink: 0 !important;
   }
   
   .gallery-item img {
-    height: 180px;
+    height: 180px !important;
+    width: 100% !important;
   }
   
   .cv-content {
@@ -534,7 +542,7 @@ body {
 
 @media (max-width: 480px) {
   .profile-name {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
   
   .profile-title {
@@ -563,21 +571,25 @@ body {
   }
   
   .gallery-container {
-    margin: 1rem -1rem 0 -1rem;
-    padding: 0 0.5rem;
+    margin: 1rem -1rem 0 -1rem !important;
+    padding: 0 0.5rem !important;
+    width: calc(100% + 2rem) !important;
   }
   
   .gallery-belt {
-    gap: 0.5rem;
+    gap: 0.5rem !important;
+    min-width: 100% !important;
   }
   
   .gallery-item {
-    min-width: 140px;
-    height: 140px;
+    min-width: 140px !important;
+    height: 140px !important;
+    flex-shrink: 0 !important;
   }
   
   .gallery-item img {
-    height: 140px;
+    height: 140px !important;
+    width: 100% !important;
   }
   
   .about-text {

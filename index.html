@@ -5,39 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Corey Thompson | Performance Marketing Specialist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css?v=2">
+  <link rel="stylesheet" href="./main.css?v=3">
+  <link rel="stylesheet" href="main.css?v=3">
   <style>
-    /* Critical mobile fallback styles */
+    /* Critical mobile fallback styles - FORCE MOBILE RESPONSIVENESS */
+    * {
+      box-sizing: border-box !important;
+    }
+    
+    body {
+      background: #000000 !important;
+      color: #ffffff !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+    
+    .gallery-container {
+      overflow: hidden !important;
+      margin-top: 2rem !important;
+      position: relative !important;
+      width: 100% !important;
+    }
+    
+    .gallery-belt {
+      display: flex !important;
+      gap: 1.5rem !important;
+      animation: scrollGallery 60s linear infinite !important;
+      width: max-content !important;
+      min-width: 100% !important;
+    }
+    
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.02) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      transition: all 0.3s ease !important;
+      min-width: 300px !important;
+      height: 300px !important;
+      flex-shrink: 0 !important;
+      position: relative !important;
+    }
+    
+    .gallery-item img {
+      width: 100% !important;
+      height: 300px !important;
+      object-fit: cover !important;
+      transition: transform 0.3s ease !important;
+      display: block !important;
+    }
+    
+    @keyframes scrollGallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
     @media (max-width: 768px) {
-      .gallery-container {
-        margin: 1rem -1rem 0 -1rem !important;
-        padding: 0 1rem !important;
+      .container {
+        padding: 1rem !important;
       }
-      .gallery-item {
-        min-width: 180px !important;
-        height: 180px !important;
-      }
-      .gallery-item img {
-        height: 180px !important;
-      }
+      
       .profile-name {
         font-size: 3rem !important;
       }
+      
+      .gallery-container {
+        margin: 1rem -1rem 0 -1rem !important;
+        padding: 0 1rem !important;
+        width: calc(100% + 2rem) !important;
+      }
+      
+      .gallery-belt {
+        gap: 0.75rem !important;
+        min-width: 100% !important;
+      }
+      
+      .gallery-item {
+        min-width: 180px !important;
+        height: 180px !important;
+        flex-shrink: 0 !important;
+      }
+      
+      .gallery-item img {
+        height: 180px !important;
+        width: 100% !important;
+      }
     }
+    
     @media (max-width: 480px) {
+      .profile-name {
+        font-size: 2rem !important;
+      }
+      
       .gallery-container {
         margin: 1rem -1rem 0 -1rem !important;
         padding: 0 0.5rem !important;
+        width: calc(100% + 2rem) !important;
       }
+      
+      .gallery-belt {
+        gap: 0.5rem !important;
+        min-width: 100% !important;
+      }
+      
       .gallery-item {
         min-width: 140px !important;
         height: 140px !important;
+        flex-shrink: 0 !important;
       }
+      
       .gallery-item img {
         height: 140px !important;
-      }
-      .profile-name {
-        font-size: 2rem !important;
+        width: 100% !important;
       }
     }
   </style>

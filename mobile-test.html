@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Test</title>
+  <style>
+    body {
+      background: #000000;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .test-gallery {
+      overflow: hidden;
+      margin: 20px -20px;
+      padding: 0 20px;
+    }
+    
+    .test-belt {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+    }
+    
+    .test-item {
+      min-width: 200px;
+      height: 200px;
+      background: #333;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .test-item {
+        min-width: 150px;
+        height: 150px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .test-item {
+        min-width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Mobile Test Page</h1>
+  <p>If you can see this, mobile styles are working.</p>
+  
+  <div class="test-gallery">
+    <div class="test-belt">
+      <div class="test-item">Item 1</div>
+      <div class="test-item">Item 2</div>
+      <div class="test-item">Item 3</div>
+      <div class="test-item">Item 4</div>
+      <div class="test-item">Item 5</div>
+    </div>
+  </div>
+  
+  <p>Screen width: <span id="width"></span>px</p>
+  
+  <script>
+    document.getElementById('width').textContent = window.innerWidth;
+    window.addEventListener('resize', () => {
+      document.getElementById('width').textContent = window.innerWidth;
+    });
+  </script>
+</body>
+</html> 

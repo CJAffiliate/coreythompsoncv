@@ -132,6 +132,60 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// Force mobile responsiveness
+function forceMobileStyles() {
+  const isMobile = window.innerWidth <= 768;
+  const isSmallMobile = window.innerWidth <= 480;
+  
+  if (isMobile) {
+    // Force gallery container styles
+    const galleryContainer = document.querySelector('.gallery-container');
+    if (galleryContainer) {
+      galleryContainer.style.margin = '1rem -1rem 0 -1rem';
+      galleryContainer.style.padding = isSmallMobile ? '0 0.5rem' : '0 1rem';
+      galleryContainer.style.width = 'calc(100% + 2rem)';
+    }
+    
+    // Force gallery item styles
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+      if (isSmallMobile) {
+        item.style.minWidth = '140px';
+        item.style.height = '140px';
+      } else {
+        item.style.minWidth = '180px';
+        item.style.height = '180px';
+      }
+      item.style.flexShrink = '0';
+    });
+    
+    // Force gallery image styles
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    galleryImages.forEach(img => {
+      if (isSmallMobile) {
+        img.style.height = '140px';
+      } else {
+        img.style.height = '180px';
+      }
+      img.style.width = '100%';
+    });
+    
+    // Force title size
+    const profileName = document.querySelector('.profile-name');
+    if (profileName) {
+      if (isSmallMobile) {
+        profileName.style.fontSize = '2rem';
+      } else {
+        profileName.style.fontSize = '3rem';
+      }
+    }
+  }
+}
+
+// Apply mobile styles on load and resize
+window.addEventListener('load', forceMobileStyles);
+window.addEventListener('resize', forceMobileStyles);
+
 // Add loading animation
 window.addEventListener('load', () => {
   document.body.style.opacity = '0';

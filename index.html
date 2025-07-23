@@ -50,12 +50,15 @@
       width: 100% !important;
       height: 300px !important;
       object-fit: cover !important;
-      transition: transform 0.3s ease !important;
+      transition: transform 0.3s ease, opacity 0.3s ease !important;
       display: block !important;
       max-width: none !important;
       min-width: auto !important;
       max-height: none !important;
       min-height: auto !important;
+      /* CRITICAL: Prevent image sizing flash */
+      aspect-ratio: 1 !important;
+      contain: layout style paint !important;
     }
     
     .cv-image {
@@ -251,53 +254,53 @@
         <div class="gallery-container">
           <div class="gallery-belt" id="galleryBelt">
             <div class="gallery-item">
-              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <!-- Duplicate items for seamless loop -->
             <div class="gallery-item">
-              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" />
+              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
             </div>
           </div>
         </div>

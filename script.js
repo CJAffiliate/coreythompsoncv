@@ -203,10 +203,13 @@ function forceImageSizing() {
   // Gallery images
   const galleryImages = document.querySelectorAll('.gallery-item img');
   galleryImages.forEach(img => {
+    // CRITICAL: Set sizing BEFORE image loads
     img.style.width = '100%';
     img.style.objectFit = 'cover';
     img.style.display = 'block';
     img.style.pointerEvents = 'none';
+    img.style.aspectRatio = '1';
+    img.style.contain = 'layout style paint';
     
     // Set height based on screen size
     if (window.innerWidth <= 480) {
@@ -215,6 +218,11 @@ function forceImageSizing() {
       img.style.height = '180px';
     } else {
       img.style.height = '300px';
+    }
+    
+    // Only show image after sizing is applied
+    if (img.complete && img.naturalHeight !== 0) {
+      img.style.opacity = '1';
     }
   });
   
@@ -297,11 +305,31 @@ window.addEventListener('resize', () => {
 function addImageLoadListeners() {
   const allImages = document.querySelectorAll('img');
   allImages.forEach(img => {
+    // Set initial sizing immediately
+    if (img.classList.contains('gallery-item') || img.parentElement.classList.contains('gallery-item')) {
+      img.style.width = '100%';
+      img.style.objectFit = 'cover';
+      img.style.aspectRatio = '1';
+      img.style.contain = 'layout style paint';
+      
+      if (window.innerWidth <= 480) {
+        img.style.height = '140px';
+      } else if (window.innerWidth <= 768) {
+        img.style.height = '180px';
+      } else {
+        img.style.height = '300px';
+      }
+    }
+    
     img.addEventListener('load', () => {
+      // Apply sizing and fade in
       forceImageSizing();
+      img.style.opacity = '1';
     });
+    
     img.addEventListener('error', () => {
       console.log('Image failed to load:', img.src);
+      img.style.display = 'none';
     });
   });
 }

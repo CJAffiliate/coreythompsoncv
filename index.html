@@ -5,219 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Corey Thompson | Performance Marketing Specialist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./main.css?v=4">
-  <link rel="stylesheet" href="main.css?v=4">
-  <link rel="stylesheet" href="./github-pages-fix.css?v=1">
+  <link rel="stylesheet" href="main.css">
   <style>
-    /* Critical mobile fallback styles - FORCE MOBILE RESPONSIVENESS */
-    * {
-      box-sizing: border-box !important;
-    }
-    
-    body {
-      background: #000000 !important;
-      color: #ffffff !important;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    }
-    
+    /* Critical gallery styles - mobile first */
     .gallery-container {
-      overflow: hidden !important;
-      margin-top: 2rem !important;
-      position: relative !important;
-      width: 100% !important;
+      overflow: hidden;
+      margin: 2rem -1rem 0 -1rem;
+      padding: 0 1rem;
+      width: calc(100% + 2rem);
     }
     
-    .gallery-belt {
-      display: flex !important;
-      gap: 1.5rem !important;
-      animation: scrollGallery 60s linear infinite !important;
-      width: max-content !important;
-      min-width: 100% !important;
+    .gallery-scroll {
+      display: flex;
+      gap: 1rem;
+      animation: scroll 30s linear infinite;
+      width: max-content;
     }
     
     .gallery-item {
-      background: rgba(255, 255, 255, 0.02) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      border-radius: 12px !important;
-      overflow: hidden !important;
-      transition: all 0.3s ease !important;
-      min-width: 300px !important;
-      height: 300px !important;
-      flex-shrink: 0 !important;
-      position: relative !important;
+      flex-shrink: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .gallery-item img {
-      width: 100% !important;
-      height: 300px !important;
-      object-fit: cover !important;
-      transition: transform 0.3s ease, opacity 0.3s ease !important;
-      display: block !important;
-      max-width: none !important;
-      min-width: auto !important;
-      max-height: none !important;
-      min-height: auto !important;
-      /* CRITICAL: Prevent image sizing flash */
-      aspect-ratio: 1 !important;
-      contain: layout style paint !important;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     
-    .cv-image {
-      width: 100% !important;
-      height: auto !important;
-      max-width: 400px !important;
-      object-fit: contain !important;
-      display: block !important;
-      margin: 0 auto !important;
-    }
-    
-    @keyframes scrollGallery {
+    @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-50% - 0.75rem)); }
+      100% { transform: translateX(-50%); }
     }
     
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem !important;
-      }
-      
-      .profile-name {
-        font-size: 3rem !important;
-      }
-      
+    /* Desktop */
+    @media (min-width: 768px) {
       .gallery-container {
-        margin: 1rem -1rem 0 -1rem !important;
-        padding: 0 1rem !important;
-        width: calc(100% + 2rem) !important;
+        margin: 2rem 0 0 0;
+        padding: 0;
+        width: 100%;
       }
       
-      .gallery-belt {
-        gap: 0.75rem !important;
-        min-width: 100% !important;
+      .gallery-scroll {
+        gap: 1.5rem;
+        animation-duration: 40s;
       }
       
       .gallery-item {
-        min-width: 180px !important;
-        height: 180px !important;
-        flex-shrink: 0 !important;
-      }
-      
-      .gallery-item img {
-        height: 180px !important;
-        width: 100% !important;
-        max-width: none !important;
-        min-width: auto !important;
-        max-height: none !important;
-        min-height: auto !important;
-        object-fit: cover !important;
-      }
-      
-      .cv-image {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 300px !important;
-        object-fit: contain !important;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .profile-name {
-        font-size: 2rem !important;
-      }
-      
-      .gallery-container {
-        margin: 1rem -1rem 0 -1rem !important;
-        padding: 0 0.5rem !important;
-        width: calc(100% + 2rem) !important;
-      }
-      
-      .gallery-belt {
-        gap: 0.5rem !important;
-        min-width: 100% !important;
-      }
-      
-      .gallery-item {
-        min-width: 140px !important;
-        height: 140px !important;
-        flex-shrink: 0 !important;
-      }
-      
-      .gallery-item img {
-        height: 140px !important;
-        width: 100% !important;
-        max-width: none !important;
-        min-width: auto !important;
-        max-height: none !important;
-        min-height: auto !important;
-        object-fit: cover !important;
-      }
-      
-      .cv-image {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 250px !important;
-        object-fit: contain !important;
-      }
-      
-      .accreditations-content {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 0.75rem !important;
-        margin-top: 1rem !important;
-      }
-      
-      .accreditation-item {
-        background: rgba(255, 255, 255, 0.03) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 12px !important;
-        padding: 1rem !important;
-        display: flex !important;
-        align-items: flex-start !important;
-        gap: 1rem !important;
-      }
-      
-      .accreditation-icon {
-        font-size: 1.25rem !important;
-        width: 45px !important;
-        height: 45px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        background: rgba(59, 130, 246, 0.1) !important;
-        border-radius: 12px !important;
-        border: 1px solid rgba(59, 130, 246, 0.2) !important;
-        flex-shrink: 0 !important;
-      }
-      
-      .accreditation-details h4 {
-        font-size: 0.95rem !important;
-        font-weight: 600 !important;
-        color: #ffffff !important;
-        margin-bottom: 0.5rem !important;
-      }
-      
-      .accreditation-details p {
-        font-size: 0.8rem !important;
-        color: #a0a0a0 !important;
-        margin-bottom: 0.75rem !important;
-      }
-      
-      .accreditation-date {
-        font-size: 0.75rem !important;
-        color: #3b82f6 !important;
-        font-weight: 500 !important;
-        background: rgba(59, 130, 246, 0.1) !important;
-        padding: 0.2rem 0.6rem !important;
-        border-radius: 20px !important;
-        border: 1px solid rgba(59, 130, 246, 0.2) !important;
-        display: inline-block !important;
+        width: 300px;
+        height: 300px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Glassmorphism Shine Effects -->
   <div class="glassmorphism-shine top-right"></div>
   <div class="glassmorphism-shine bottom-left"></div>
+
+  <!-- Floating Orbs -->
   <div class="floating-orbs">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -226,14 +78,14 @@
     <div class="orb orb-5"></div>
     <div class="orb orb-6"></div>
   </div>
-  
+
   <main class="container">
-    <!-- Profile Header Section -->
+    <!-- Profile Header -->
     <section class="profile-header">
       <div class="profile-content">
-        <h1 class="profile-name">COREY THOMPSON</h1>
         <div class="status-badge">Available Now</div>
-        <h2 class="profile-title">Performance Marketing | Paid Ads | Funnels & Growth</h2>
+        <h1 class="profile-name">COREY THOMPSON</h1>
+        <p class="profile-title">Performance Marketing Specialist</p>
       </div>
     </section>
 
@@ -241,16 +93,12 @@
     <section class="content-section">
       <div class="card">
         <h3 class="section-title">About Me</h3>
-        <p class="about-text">
-          I'm a (mostly) self taught marketer gaining most of my experience through real-world business trials and tribulations. My background spans from e-commerce, paid ads, funnel building, and practical marketing projects - I even flyer dropped at one point. I'm continually developing my skills through both trying things out practically as well as studying marketing, buyer psychology and direct response principles.
-        </p>
-        <p class="about-tagline">
-          As most of my marketing efforts are self propelled, I thought it best to make a quick site that can outline some of my projects and showcase my online ventures.
-        </p>
+        <p class="about-text">I'm a performance marketing specialist focused on driving measurable results through strategic digital campaigns. With expertise in Google Ads, Meta advertising, and conversion optimization, I help businesses scale their online presence profitably.</p>
+        <p class="about-tagline">From landing page optimization to full-funnel marketing strategies, I bring data-driven insights to my online ventures.</p>
       </div>
     </section>
 
-    <!-- Experience Timeline -->
+    <!-- Timeline Section -->
     <section class="content-section">
       <div class="card">
         <h3 class="section-title">Experience Timeline</h3>
@@ -307,55 +155,55 @@
         <h3 class="section-title">Project Gallery</h3>
         <p class="gallery-description">A selection of landing pages, ad creatives, and project visuals I've worked on.</p>
         <div class="gallery-container">
-          <div class="gallery-belt" id="galleryBelt">
+          <div class="gallery-scroll">
             <div class="gallery-item">
-              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/1.png" alt="Project Visual 1" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/2.png" alt="Project Visual 2" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/3.png" alt="Project Visual 3" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/4.png" alt="Project Visual 4" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/5.png" alt="Project Visual 5" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/6.png" alt="Project Visual 6" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/7.png" alt="Project Visual 7" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/8.png" alt="Project Visual 8" />
             </div>
-            <!-- Duplicate items for seamless loop -->
+            <!-- Duplicate for seamless loop -->
             <div class="gallery-item">
-              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
-            </div>
-            <div class="gallery-item">
-              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/1.png" alt="Project Visual 1" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/2.png" alt="Project Visual 2" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/3.png" alt="Project Visual 3" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/4.png" alt="Project Visual 4" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/5.png" alt="Project Visual 5" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/6.png" alt="Project Visual 6" />
             </div>
             <div class="gallery-item">
-              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" style="opacity: 0; transition: opacity 0.3s ease;" />
+              <img src="assets/7.png" alt="Project Visual 7" />
+            </div>
+            <div class="gallery-item">
+              <img src="assets/8.png" alt="Project Visual 8" />
             </div>
           </div>
         </div>
@@ -368,7 +216,7 @@
         <h3 class="section-title">My CV</h3>
         <div class="cv-content">
           <div class="cv-preview">
-            <img src="./CV/CoreyThompsonCV.png" alt="Corey Thompson CV" class="cv-image" loading="lazy" onerror="this.style.display='none'" />
+            <img src="CV/CoreyThompsonCV.png" alt="Corey Thompson CV" class="cv-image" />
           </div>
           <div class="cv-download">
             <button class="download-btn">Download PDF</button>

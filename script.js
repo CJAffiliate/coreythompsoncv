@@ -1,4 +1,4 @@
-// Smooth reveal animations for cards
+// Intersection Observer for reveal animations
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
@@ -12,405 +12,73 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Apply reveal animations to cards
+// Observe all cards
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card');
-  
-  // Add reveal animations with intersection observer
-  cards.forEach(card => {
-    observer.observe(card);
-  });
+  cards.forEach(card => observer.observe(card));
+});
 
-  // Add hover effects to timeline items
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  timelineItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      item.style.transform = 'translateX(10px)';
-      item.style.transition = 'transform 0.3s ease';
-    });
-    
-    item.addEventListener('mouseleave', () => {
-      item.style.transform = 'translateX(0)';
-    });
-  });
-
-  // Add smooth scrolling for navigation
-  const smoothScroll = (target) => {
-    const element = document.querySelector(target);
-    if (element) {
-      element.scrollIntoView({
+// Smooth scrolling for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
+    }
+  });
+});
+
+// Typing effect for profile name
+function typeWriter(element, text, speed = 100) {
+  let i = 0;
+  element.innerHTML = '';
+  
+  const typeWriter = () => {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
     }
   };
-
-  // Gallery image hover effects
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  galleryItems.forEach(item => {
-    const img = item.querySelector('img');
-    
-    item.addEventListener('mouseenter', () => {
-      img.style.transform = 'scale(1.05)';
-    });
-    
-    item.addEventListener('mouseleave', () => {
-      img.style.transform = 'scale(1)';
-    });
-  });
-
-  // Add parallax effect to glassmorphism elements
-  const glassmorphismElements = document.querySelectorAll('.glassmorphism-shine');
   
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    
-    glassmorphismElements.forEach((element, index) => {
-      const speed = index === 0 ? 0.5 : -0.3;
-      element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-  });
+  typeWriter();
+}
 
-  // Add typing effect to profile name
+// Initialize typing effect when page loads
+window.addEventListener('load', () => {
   const profileName = document.querySelector('.profile-name');
   if (profileName) {
-    const text = profileName.textContent;
-    profileName.textContent = '';
-    
-    let i = 0;
-    const typeWriter = () => {
-      if (i < text.length) {
-        profileName.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-      }
-    };
-    
-    // Start typing effect after a short delay
-    setTimeout(typeWriter, 500);
-  }
-
-  // Add status badge animation
-  const statusBadge = document.querySelector('.status-badge');
-  if (statusBadge) {
-    statusBadge.style.opacity = '0';
-    statusBadge.style.transform = 'translateY(20px)';
-    
-    setTimeout(() => {
-      statusBadge.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      statusBadge.style.opacity = '1';
-      statusBadge.style.transform = 'translateY(0)';
-    }, 1500);
-  }
-
-  // Add contact item hover animations
-  const contactItems = document.querySelectorAll('.contact-item');
-  contactItems.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateX(-20px)';
-    
-    setTimeout(() => {
-      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      item.style.opacity = '1';
-      item.style.transform = 'translateX(0)';
-    }, 2000 + (index * 200));
-  });
-});
-
-// Add smooth scroll behavior for any anchor links
-document.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
-    e.preventDefault();
-    const target = e.target.getAttribute('href');
-    const element = document.querySelector(target);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    const originalText = profileName.textContent;
+    typeWriter(profileName, originalText, 150);
   }
 });
 
-// Force mobile responsiveness and image sizing
-function forceMobileStyles() {
-  const isMobile = window.innerWidth <= 768;
-  const isSmallMobile = window.innerWidth <= 480;
-  
-  if (isMobile) {
-    // Force gallery container styles
-    const galleryContainer = document.querySelector('.gallery-container');
-    if (galleryContainer) {
-      galleryContainer.style.margin = '1rem -1rem 0 -1rem';
-      galleryContainer.style.padding = isSmallMobile ? '0 0.5rem' : '0 1rem';
-      galleryContainer.style.width = 'calc(100% + 2rem)';
-    }
-    
-    // Force gallery item styles
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    galleryItems.forEach(item => {
-      if (isSmallMobile) {
-        item.style.minWidth = '140px';
-        item.style.height = '140px';
-      } else {
-        item.style.minWidth = '180px';
-        item.style.height = '180px';
-      }
-      item.style.flexShrink = '0';
-    });
-    
-    // Force gallery image styles
-    const galleryImages = document.querySelectorAll('.gallery-item img');
-    galleryImages.forEach(img => {
-      if (isSmallMobile) {
-        img.style.height = '140px';
-      } else {
-        img.style.height = '180px';
-      }
-      img.style.width = '100%';
-      img.style.objectFit = 'cover';
-      img.style.maxWidth = 'none';
-      img.style.minWidth = 'auto';
-      img.style.maxHeight = 'none';
-      img.style.minHeight = 'auto';
-    });
-    
-    // Force CV image styles
-    const cvImage = document.querySelector('.cv-image');
-    if (cvImage) {
-      cvImage.style.width = '100%';
-      cvImage.style.height = 'auto';
-      cvImage.style.maxWidth = isSmallMobile ? '250px' : '300px';
-      cvImage.style.objectFit = 'contain';
-      cvImage.style.display = 'block';
-      cvImage.style.margin = '0 auto';
-    }
-    
-    // Force title size
-    const profileName = document.querySelector('.profile-name');
-    if (profileName) {
-      if (isSmallMobile) {
-        profileName.style.fontSize = '2rem';
-      } else {
-        profileName.style.fontSize = '3rem';
-      }
-    }
-  }
-}
-
-// Force image sizing on all devices
-function forceImageSizing() {
-  // Gallery images
-  const galleryImages = document.querySelectorAll('.gallery-item img');
-  galleryImages.forEach(img => {
-    // CRITICAL: Set sizing BEFORE image loads
-    img.style.width = '100%';
-    img.style.objectFit = 'cover';
-    img.style.display = 'block';
-    img.style.pointerEvents = 'none';
-    img.style.aspectRatio = '1';
-    img.style.contain = 'layout style paint';
-    
-    // Set height based on screen size
-    if (window.innerWidth <= 480) {
-      img.style.height = '140px';
-    } else if (window.innerWidth <= 768) {
-      img.style.height = '180px';
-    } else {
-      img.style.height = '300px';
-    }
-    
-    // Only show image after sizing is applied
-    if (img.complete && img.naturalHeight !== 0) {
-      img.style.opacity = '1';
-    }
+// Status badge animation
+const statusBadge = document.querySelector('.status-badge');
+if (statusBadge) {
+  statusBadge.addEventListener('mouseenter', () => {
+    statusBadge.style.transform = 'scale(1.05)';
   });
   
-  // CV image
-  const cvImage = document.querySelector('.cv-image');
-  if (cvImage) {
-    cvImage.style.width = '100%';
-    cvImage.style.height = 'auto';
-    cvImage.style.objectFit = 'contain';
-    cvImage.style.display = 'block';
-    cvImage.style.margin = '0 auto';
-    
-    if (window.innerWidth <= 480) {
-      cvImage.style.maxWidth = '250px';
-    } else if (window.innerWidth <= 768) {
-      cvImage.style.maxWidth = '300px';
-    } else {
-      cvImage.style.maxWidth = '400px';
-    }
-  }
-}
-
-// Enhance gallery scroll effect
-function enhanceGalleryScroll() {
-  const galleryBelt = document.querySelector('.gallery-belt');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  
-  if (galleryBelt && galleryItems.length > 0) {
-    // Add hover pause effect
-    galleryItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        galleryBelt.style.animationPlayState = 'paused';
-      });
-      
-      item.addEventListener('mouseleave', () => {
-        galleryBelt.style.animationPlayState = 'running';
-      });
-    });
-    
-    // Ensure proper animation timing
-    const isMobile = window.innerWidth <= 768;
-    const isSmallMobile = window.innerWidth <= 480;
-    
-    if (isSmallMobile) {
-      galleryBelt.style.animationDuration = '25s';
-    } else if (isMobile) {
-      galleryBelt.style.animationDuration = '30s';
-    } else {
-      galleryBelt.style.animationDuration = '40s';
-    }
-  }
-}
-
-// Apply mobile styles on load and resize
-window.addEventListener('load', () => {
-  detectGitHubPages();
-  forceMobileStyles();
-  forceImageSizing();
-  enhanceGalleryScroll();
-  
-  // Force image sizing again after a short delay to ensure images are loaded
-  setTimeout(() => {
-    detectGitHubPages();
-    forceImageSizing();
-    enhanceGalleryScroll();
-  }, 500);
-  
-  // Force image sizing again after images are fully loaded
-  setTimeout(() => {
-    detectGitHubPages();
-    forceImageSizing();
-    enhanceGalleryScroll();
-  }, 1000);
-  
-  addImageLoadListeners();
-});
-
-window.addEventListener('resize', () => {
-  forceMobileStyles();
-  forceImageSizing();
-  enhanceGalleryScroll();
-});
-
-// Detect GitHub Pages and apply specific fixes
-function detectGitHubPages() {
-  const isGitHubPages = window.location.hostname.includes('github.io') || 
-                       window.location.hostname.includes('pages.dev') ||
-                       window.location.hostname.includes('netlify.app');
-  
-  if (isGitHubPages) {
-    console.log('GitHub Pages detected - applying specific fixes');
-    
-    // Force gallery styles with higher specificity
-    const galleryContainer = document.querySelector('.gallery-container');
-    const galleryBelt = document.querySelector('.gallery-belt');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const galleryImages = document.querySelectorAll('.gallery-item img');
-    
-    if (galleryContainer) {
-      galleryContainer.style.cssText = `
-        overflow: hidden !important;
-        margin-top: 2rem !important;
-        position: relative !important;
-        width: 100% !important;
-        background: rgba(255, 255, 255, 0.01) !important;
-        border-radius: 16px !important;
-        padding: 1rem 0 !important;
-      `;
-    }
-    
-    if (galleryBelt) {
-      galleryBelt.style.cssText = `
-        display: flex !important;
-        gap: 1.5rem !important;
-        animation: scrollGallery 40s linear infinite !important;
-        width: max-content !important;
-        will-change: transform !important;
-        transform: translateZ(0) !important;
-      `;
-    }
-    
-    galleryItems.forEach(item => {
-      item.style.cssText = `
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-radius: 12px !important;
-        overflow: hidden !important;
-        transition: all 0.3s ease !important;
-        min-width: 300px !important;
-        height: 300px !important;
-        flex-shrink: 0 !important;
-        position: relative !important;
-        backdrop-filter: blur(10px) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
-      `;
-    });
-    
-    galleryImages.forEach(img => {
-      img.style.cssText = `
-        width: 100% !important;
-        height: 300px !important;
-        object-fit: cover !important;
-        transition: transform 0.3s ease, opacity 0.3s ease !important;
-        display: block !important;
-        pointer-events: none !important;
-        aspect-ratio: 1 !important;
-        contain: layout style paint !important;
-        min-width: 0 !important;
-        min-height: 0 !important;
-        max-width: none !important;
-        max-height: none !important;
-      `;
-    });
-  }
-}
-
-// Add image load event listeners
-function addImageLoadListeners() {
-  const allImages = document.querySelectorAll('img');
-  allImages.forEach(img => {
-    // Set initial sizing immediately
-    if (img.classList.contains('gallery-item') || img.parentElement.classList.contains('gallery-item')) {
-      img.style.width = '100%';
-      img.style.objectFit = 'cover';
-      img.style.aspectRatio = '1';
-      img.style.contain = 'layout style paint';
-      
-      if (window.innerWidth <= 480) {
-        img.style.height = '140px';
-      } else if (window.innerWidth <= 768) {
-        img.style.height = '180px';
-      } else {
-        img.style.height = '300px';
-      }
-    }
-    
-    img.addEventListener('load', () => {
-      // Apply sizing and fade in
-      forceImageSizing();
-      img.style.opacity = '1';
-    });
-    
-    img.addEventListener('error', () => {
-      console.log('Image failed to load:', img.src);
-      img.style.display = 'none';
-    });
+  statusBadge.addEventListener('mouseleave', () => {
+    statusBadge.style.transform = 'scale(1)';
   });
 }
+
+// Parallax background effect
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const parallaxElements = document.querySelectorAll('.glassmorphism-shine');
+  
+  parallaxElements.forEach(element => {
+    const speed = 0.5;
+    element.style.transform = `translateY(${scrolled * speed}px)`;
+  });
+});
 
 // Add loading animation
 window.addEventListener('load', () => {
@@ -420,6 +88,4 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     document.body.style.opacity = '1';
   }, 100);
-  
-  addImageLoadListeners();
 }); 

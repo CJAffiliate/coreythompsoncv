@@ -52,6 +52,19 @@
       object-fit: cover !important;
       transition: transform 0.3s ease !important;
       display: block !important;
+      max-width: none !important;
+      min-width: auto !important;
+      max-height: none !important;
+      min-height: auto !important;
+    }
+    
+    .cv-image {
+      width: 100% !important;
+      height: auto !important;
+      max-width: 400px !important;
+      object-fit: contain !important;
+      display: block !important;
+      margin: 0 auto !important;
     }
     
     @keyframes scrollGallery {
@@ -88,6 +101,18 @@
       .gallery-item img {
         height: 180px !important;
         width: 100% !important;
+        max-width: none !important;
+        min-width: auto !important;
+        max-height: none !important;
+        min-height: auto !important;
+        object-fit: cover !important;
+      }
+      
+      .cv-image {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 300px !important;
+        object-fit: contain !important;
       }
     }
     
@@ -116,6 +141,18 @@
       .gallery-item img {
         height: 140px !important;
         width: 100% !important;
+        max-width: none !important;
+        min-width: auto !important;
+        max-height: none !important;
+        min-height: auto !important;
+        object-fit: cover !important;
+      }
+      
+      .cv-image {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 250px !important;
+        object-fit: contain !important;
       }
     }
   </style>
@@ -214,53 +251,53 @@
         <div class="gallery-container">
           <div class="gallery-belt" id="galleryBelt">
             <div class="gallery-item">
-              <img src="assets/1.png" alt="Project Visual 1" />
+              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/2.png" alt="Project Visual 2" />
+              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/3.png" alt="Project Visual 3" />
+              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/4.png" alt="Project Visual 4" />
+              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/5.png" alt="Project Visual 5" />
+              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/6.png" alt="Project Visual 6" />
+              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/7.png" alt="Project Visual 7" />
+              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/8.png" alt="Project Visual 8" />
+              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <!-- Duplicate items for seamless loop -->
             <div class="gallery-item">
-              <img src="assets/1.png" alt="Project Visual 1" />
+              <img src="./assets/1.png" alt="Project Visual 1" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/2.png" alt="Project Visual 2" />
+              <img src="./assets/2.png" alt="Project Visual 2" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/3.png" alt="Project Visual 3" />
+              <img src="./assets/3.png" alt="Project Visual 3" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/4.png" alt="Project Visual 4" />
+              <img src="./assets/4.png" alt="Project Visual 4" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/5.png" alt="Project Visual 5" />
+              <img src="./assets/5.png" alt="Project Visual 5" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/6.png" alt="Project Visual 6" />
+              <img src="./assets/6.png" alt="Project Visual 6" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/7.png" alt="Project Visual 7" />
+              <img src="./assets/7.png" alt="Project Visual 7" loading="lazy" onerror="this.style.display='none'" />
             </div>
             <div class="gallery-item">
-              <img src="assets/8.png" alt="Project Visual 8" />
+              <img src="./assets/8.png" alt="Project Visual 8" loading="lazy" onerror="this.style.display='none'" />
             </div>
           </div>
         </div>
@@ -273,7 +310,7 @@
         <h3 class="section-title">My CV</h3>
         <div class="cv-content">
           <div class="cv-preview">
-            <img src="CV/CoreyThompsonCV.png" alt="Corey Thompson CV" class="cv-image" />
+            <img src="./CV/CoreyThompsonCV.png" alt="Corey Thompson CV" class="cv-image" loading="lazy" onerror="this.style.display='none'" />
           </div>
           <div class="cv-download">
             <button class="download-btn">Download PDF</button>

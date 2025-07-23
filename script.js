@@ -132,7 +132,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Force mobile responsiveness
+// Force mobile responsiveness and image sizing
 function forceMobileStyles() {
   const isMobile = window.innerWidth <= 768;
   const isSmallMobile = window.innerWidth <= 480;
@@ -168,7 +168,23 @@ function forceMobileStyles() {
         img.style.height = '180px';
       }
       img.style.width = '100%';
+      img.style.objectFit = 'cover';
+      img.style.maxWidth = 'none';
+      img.style.minWidth = 'auto';
+      img.style.maxHeight = 'none';
+      img.style.minHeight = 'auto';
     });
+    
+    // Force CV image styles
+    const cvImage = document.querySelector('.cv-image');
+    if (cvImage) {
+      cvImage.style.width = '100%';
+      cvImage.style.height = 'auto';
+      cvImage.style.maxWidth = isSmallMobile ? '250px' : '300px';
+      cvImage.style.objectFit = 'contain';
+      cvImage.style.display = 'block';
+      cvImage.style.margin = '0 auto';
+    }
     
     // Force title size
     const profileName = document.querySelector('.profile-name');
@@ -182,9 +198,77 @@ function forceMobileStyles() {
   }
 }
 
+// Force image sizing on all devices
+function forceImageSizing() {
+  // Gallery images
+  const galleryImages = document.querySelectorAll('.gallery-item img');
+  galleryImages.forEach(img => {
+    img.style.width = '100%';
+    img.style.objectFit = 'cover';
+    img.style.display = 'block';
+    
+    // Set height based on screen size
+    if (window.innerWidth <= 480) {
+      img.style.height = '140px';
+    } else if (window.innerWidth <= 768) {
+      img.style.height = '180px';
+    } else {
+      img.style.height = '300px';
+    }
+  });
+  
+  // CV image
+  const cvImage = document.querySelector('.cv-image');
+  if (cvImage) {
+    cvImage.style.width = '100%';
+    cvImage.style.height = 'auto';
+    cvImage.style.objectFit = 'contain';
+    cvImage.style.display = 'block';
+    cvImage.style.margin = '0 auto';
+    
+    if (window.innerWidth <= 480) {
+      cvImage.style.maxWidth = '250px';
+    } else if (window.innerWidth <= 768) {
+      cvImage.style.maxWidth = '300px';
+    } else {
+      cvImage.style.maxWidth = '400px';
+    }
+  }
+}
+
 // Apply mobile styles on load and resize
-window.addEventListener('load', forceMobileStyles);
-window.addEventListener('resize', forceMobileStyles);
+window.addEventListener('load', () => {
+  forceMobileStyles();
+  forceImageSizing();
+  
+  // Force image sizing again after a short delay to ensure images are loaded
+  setTimeout(() => {
+    forceImageSizing();
+  }, 500);
+  
+  // Force image sizing again after images are fully loaded
+  setTimeout(() => {
+    forceImageSizing();
+  }, 1000);
+});
+
+window.addEventListener('resize', () => {
+  forceMobileStyles();
+  forceImageSizing();
+});
+
+// Add image load event listeners
+function addImageLoadListeners() {
+  const allImages = document.querySelectorAll('img');
+  allImages.forEach(img => {
+    img.addEventListener('load', () => {
+      forceImageSizing();
+    });
+    img.addEventListener('error', () => {
+      console.log('Image failed to load:', img.src);
+    });
+  });
+}
 
 // Add loading animation
 window.addEventListener('load', () => {
@@ -194,4 +278,6 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     document.body.style.opacity = '1';
   }, 100);
+  
+  addImageLoadListeners();
 }); 

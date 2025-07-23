@@ -157,6 +157,60 @@
         max-width: 250px !important;
         object-fit: contain !important;
       }
+      
+      .accreditations-content {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+        margin-top: 1rem !important;
+      }
+      
+      .accreditation-item {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        padding: 1rem !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+      }
+      
+      .accreditation-icon {
+        font-size: 1.25rem !important;
+        width: 45px !important;
+        height: 45px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(59, 130, 246, 0.1) !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(59, 130, 246, 0.2) !important;
+        flex-shrink: 0 !important;
+      }
+      
+      .accreditation-details h4 {
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        color: #ffffff !important;
+        margin-bottom: 0.5rem !important;
+      }
+      
+      .accreditation-details p {
+        font-size: 0.8rem !important;
+        color: #a0a0a0 !important;
+        margin-bottom: 0.75rem !important;
+      }
+      
+      .accreditation-date {
+        font-size: 0.75rem !important;
+        color: #3b82f6 !important;
+        font-weight: 500 !important;
+        background: rgba(59, 130, 246, 0.1) !important;
+        padding: 0.2rem 0.6rem !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(59, 130, 246, 0.2) !important;
+        display: inline-block !important;
+      }
     }
   </style>
 </head>
@@ -317,6 +371,50 @@
           </div>
           <div class="cv-download">
             <button class="download-btn">Download PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accreditations Section -->
+    <section class="content-section">
+      <div class="card">
+        <h3 class="section-title">Current Accreditations</h3>
+        <div class="accreditations-content">
+          <div class="accreditation-item">
+            <div class="accreditation-icon">🎯</div>
+            <div class="accreditation-details">
+              <h4>Google Ads Certified</h4>
+              <p>Search, Display, Shopping & Video Advertising</p>
+              <span class="accreditation-date">Valid until: December 2024</span>
+            </div>
+          </div>
+          
+          <div class="accreditation-item">
+            <div class="accreditation-icon">📊</div>
+            <div class="accreditation-details">
+              <h4>Google Analytics 4 Certified</h4>
+              <p>Advanced Analytics & Measurement</p>
+              <span class="accreditation-date">Valid until: December 2024</span>
+            </div>
+          </div>
+          
+          <div class="accreditation-item">
+            <div class="accreditation-icon">💼</div>
+            <div class="accreditation-details">
+              <h4>Meta Business Suite Certified</h4>
+              <p>Facebook & Instagram Advertising</p>
+              <span class="accreditation-date">Valid until: December 2024</span>
+            </div>
+          </div>
+          
+          <div class="accreditation-item">
+            <div class="accreditation-icon">🔍</div>
+            <div class="accreditation-details">
+              <h4>Google Search Console Certified</h4>
+              <p>SEO & Search Performance Optimization</p>
+              <span class="accreditation-date">Valid until: December 2024</span>
+            </div>
           </div>
         </div>
       </div>

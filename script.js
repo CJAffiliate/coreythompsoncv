@@ -278,21 +278,26 @@ function enhanceGalleryScroll() {
 
 // Apply mobile styles on load and resize
 window.addEventListener('load', () => {
+  detectGitHubPages();
   forceMobileStyles();
   forceImageSizing();
   enhanceGalleryScroll();
   
   // Force image sizing again after a short delay to ensure images are loaded
   setTimeout(() => {
+    detectGitHubPages();
     forceImageSizing();
     enhanceGalleryScroll();
   }, 500);
   
   // Force image sizing again after images are fully loaded
   setTimeout(() => {
+    detectGitHubPages();
     forceImageSizing();
     enhanceGalleryScroll();
   }, 1000);
+  
+  addImageLoadListeners();
 });
 
 window.addEventListener('resize', () => {
@@ -300,6 +305,79 @@ window.addEventListener('resize', () => {
   forceImageSizing();
   enhanceGalleryScroll();
 });
+
+// Detect GitHub Pages and apply specific fixes
+function detectGitHubPages() {
+  const isGitHubPages = window.location.hostname.includes('github.io') || 
+                       window.location.hostname.includes('pages.dev') ||
+                       window.location.hostname.includes('netlify.app');
+  
+  if (isGitHubPages) {
+    console.log('GitHub Pages detected - applying specific fixes');
+    
+    // Force gallery styles with higher specificity
+    const galleryContainer = document.querySelector('.gallery-container');
+    const galleryBelt = document.querySelector('.gallery-belt');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    
+    if (galleryContainer) {
+      galleryContainer.style.cssText = `
+        overflow: hidden !important;
+        margin-top: 2rem !important;
+        position: relative !important;
+        width: 100% !important;
+        background: rgba(255, 255, 255, 0.01) !important;
+        border-radius: 16px !important;
+        padding: 1rem 0 !important;
+      `;
+    }
+    
+    if (galleryBelt) {
+      galleryBelt.style.cssText = `
+        display: flex !important;
+        gap: 1.5rem !important;
+        animation: scrollGallery 40s linear infinite !important;
+        width: max-content !important;
+        will-change: transform !important;
+        transform: translateZ(0) !important;
+      `;
+    }
+    
+    galleryItems.forEach(item => {
+      item.style.cssText = `
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        transition: all 0.3s ease !important;
+        min-width: 300px !important;
+        height: 300px !important;
+        flex-shrink: 0 !important;
+        position: relative !important;
+        backdrop-filter: blur(10px) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+      `;
+    });
+    
+    galleryImages.forEach(img => {
+      img.style.cssText = `
+        width: 100% !important;
+        height: 300px !important;
+        object-fit: cover !important;
+        transition: transform 0.3s ease, opacity 0.3s ease !important;
+        display: block !important;
+        pointer-events: none !important;
+        aspect-ratio: 1 !important;
+        contain: layout style paint !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        max-width: none !important;
+        max-height: none !important;
+      `;
+    });
+  }
+}
 
 // Add image load event listeners
 function addImageLoadListeners() {

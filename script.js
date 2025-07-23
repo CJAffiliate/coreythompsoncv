@@ -206,6 +206,7 @@ function forceImageSizing() {
     img.style.width = '100%';
     img.style.objectFit = 'cover';
     img.style.display = 'block';
+    img.style.pointerEvents = 'none';
     
     // Set height based on screen size
     if (window.innerWidth <= 480) {
@@ -236,25 +237,60 @@ function forceImageSizing() {
   }
 }
 
+// Enhance gallery scroll effect
+function enhanceGalleryScroll() {
+  const galleryBelt = document.querySelector('.gallery-belt');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  
+  if (galleryBelt && galleryItems.length > 0) {
+    // Add hover pause effect
+    galleryItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        galleryBelt.style.animationPlayState = 'paused';
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        galleryBelt.style.animationPlayState = 'running';
+      });
+    });
+    
+    // Ensure proper animation timing
+    const isMobile = window.innerWidth <= 768;
+    const isSmallMobile = window.innerWidth <= 480;
+    
+    if (isSmallMobile) {
+      galleryBelt.style.animationDuration = '25s';
+    } else if (isMobile) {
+      galleryBelt.style.animationDuration = '30s';
+    } else {
+      galleryBelt.style.animationDuration = '40s';
+    }
+  }
+}
+
 // Apply mobile styles on load and resize
 window.addEventListener('load', () => {
   forceMobileStyles();
   forceImageSizing();
+  enhanceGalleryScroll();
   
   // Force image sizing again after a short delay to ensure images are loaded
   setTimeout(() => {
     forceImageSizing();
+    enhanceGalleryScroll();
   }, 500);
   
   // Force image sizing again after images are fully loaded
   setTimeout(() => {
     forceImageSizing();
+    enhanceGalleryScroll();
   }, 1000);
 });
 
 window.addEventListener('resize', () => {
   forceMobileStyles();
   forceImageSizing();
+  enhanceGalleryScroll();
 });
 
 // Add image load event listeners
